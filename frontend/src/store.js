@@ -40,7 +40,7 @@ export const useStore = create((set, get) => ({
       set({
         // Here it is, each new edge enters with these props
         // Make the type into custom, and add any required details into data
-        edges: addEdge({...connection, type: 'custom', data: { label: "Edit"}, markerEnd: {type: MarkerType.Arrow, height: '20px', width: '20px'}}, get().edges),
+        edges: addEdge({...connection, type: 'custom', data: { label: "Edit"}}, get().edges),
       });
     },
     updateNodeField: (nodeId, fieldName, fieldValue) => {

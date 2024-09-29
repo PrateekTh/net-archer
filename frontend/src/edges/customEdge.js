@@ -6,9 +6,6 @@ import {
     useReactFlow,
 } from 'reactflow';
 
-
-
-
 export const CustomEdge = ({
     id,
     sourceX,
@@ -17,10 +14,7 @@ export const CustomEdge = ({
     targetY,
     sourcePosition,
     targetPosition,
-    data,
-}) => {
-
-
+    data }) => {
 
     const [edgePath, labelX, labelY] = getBezierPath({
         sourceX,
@@ -93,26 +87,28 @@ export const CustomEdge = ({
                     onInput={(e)=>onLabelChange(e)}
                 >
                 </div>
-                
-                
-                <div className='edge-tools'>
-                    <div className='reveal-btn'>
-                        <input style={{
-                            position: 'absolute',
-                            background: "red",
-                            transform: `translate(-75%, -50%) translate(${labelX}px,${labelY + 15}px)`,
-                            pointerEvents: 'all'
-                        }}
+                <div className='reveal-btn'>
+                    <input style={{
+                        position: 'absolute',
+                        background: "red",
+                        transform: `translate(-50%, -70%) translate(${labelX}px,${labelY}px)`,
+                        pointerEvents: 'all'
+                    }}
 
-                        checked={showSettings}
-                        onChange={onClickSettings}
-                        type='checkbox'/>
-                    </div>
+                    checked={showSettings}
+                    onChange={onClickSettings}
+                    type='checkbox'/>
+                </div>
+                
+                
+                <div className='edge-tools' style={{
+                    position: 'absolute',
+                    transform: `translate(-50%, -50%) translate(${labelX}px,${labelY + 25}px)`,
+                }}>
                     {
                         showSettings &&
                         <div className="edge-btns" style={{
-                                    position: 'absolute',
-                                    transform: `translate(-50%, -50%) translate(${labelX}px,${labelY + 40}px)`,
+                                   
                                     display: 'flex'
                                     }}>
                             <div
@@ -139,18 +135,13 @@ export const CustomEdge = ({
                                     fontWeight: 700,
                                     pointerEvents: 'all',
                                     cursor: 'pointer'
-
                                 }}
                                 onClick={onToggleAnimation}
                             > Animate</div> 
                         </div>
                     }
-
                 </div>
 
-
-            
-                
             </EdgeLabelRenderer>
         </>
     );
