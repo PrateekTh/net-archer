@@ -4,6 +4,7 @@ import {
     EdgeLabelRenderer,
     BaseEdge,
     useReactFlow,
+    addEdge,
 } from 'reactflow';
 
 export const CustomEdge = ({
@@ -12,6 +13,8 @@ export const CustomEdge = ({
     sourceY,
     targetX,
     targetY,
+    selected,
+    animated,
     sourcePosition,
     targetPosition,
     data }) => {
@@ -27,12 +30,9 @@ export const CustomEdge = ({
 
     // build the component to set properties for the baseEdge, with the custom label
     // custom label settings contains: + 3-option toggle : bi-directional - left to right - right to left; + animated or not; + delete btn
-    if(!data.reverse) data.reverse = false;
 
     const [anim, setAnim] = useState(false);
-    const [showSettings, setShowSettings] = useState(false);
-    const [reverseDirection, setReverseDirection] = useState(data.reverse);
-    const { setEdges } = useReactFlow();
+    const { getEdge, getEdges, setEdges } = useReactFlow();
 
     function onDelete(){
         setEdges((edges) => edges.filter((edge) => edge.id !== id));
@@ -40,11 +40,6 @@ export const CustomEdge = ({
 
     function onToggleAnimation(){
         setAnim(!anim);
-        // console.log(anim);
-    }
-
-    function onSwapDirection(){
-        
     }
 
     function onLabelChange(e){
@@ -52,11 +47,21 @@ export const CustomEdge = ({
         // console.log(data);
     }
 
-    function onClickSettings(e){
-        setShowSettings(e.currentTarget.checked);
-        // console.log(showSettings)
-    }
+    function onReverse(){
+        let edge = getEdge(id);
+        let temp = {...edge};
+        temp.source = edge.target;
+        temp.sourceHandle = edge.targetHandle;
+        temp.target = edge.source;
+        temp.targetHandle = edge.sourceHandle;
+        temp.id = `reactflow__edge-${temp.source}${temp.sourceHandle}-${temp.target}${temp.targetHandle}`;
+        
+        let edges = getEdges();
+        edges = addEdge(temp, edges);
 
+        edges.filter((e) => e.id !== id);
+        setEdges(() => edges.filter((edge) => edge.id !== id));
+    }
     return (
         <>
             <BaseEdge id={id} path={edgePath} 
@@ -86,27 +91,14 @@ export const CustomEdge = ({
 
                     onInput={(e)=>onLabelChange(e)}
                 >
-                </div>
-                <div className='reveal-btn'>
-                    <input style={{
-                        position: 'absolute',
-                        background: "red",
-                        transform: `translate(-50%, -70%) translate(${labelX}px,${labelY}px)`,
-                        pointerEvents: 'all'
-                    }}
-
-                    checked={showSettings}
-                    onChange={onClickSettings}
-                    type='checkbox'/>
-                </div>
-                
+                </div>                
                 
                 <div className='edge-tools' style={{
                     position: 'absolute',
                     transform: `translate(-50%, -50%) translate(${labelX}px,${labelY + 25}px)`,
                 }}>
                     {
-                        showSettings &&
+                        selected &&
                         <div className="edge-btns" style={{
                                    
                                     display: 'flex'
@@ -114,17 +106,17 @@ export const CustomEdge = ({
                             <div
                                 style={{
                                     backgroundColor: '#F39A9D',
-                                    padding: 5,
+                                    padding: 10,
                                     margin: 2,
                                     borderRadius: 20,
-                                    fontSize: 12,
+                                    fontSize: 10,
                                     fontWeight: 700,
                                     pointerEvents: 'all',
                                     cursor: 'pointer'
                                 }}
                                 onClick={onDelete}
-                            > ⨯ </div>
-
+                            >  </div>
+                            
                             <div
                                 style={{
                                     backgroundColor: '#6DB1BF',
@@ -137,7 +129,23 @@ export const CustomEdge = ({
                                     cursor: 'pointer'
                                 }}
                                 onClick={onToggleAnimation}
-                            > Animate</div> 
+                            > Animate
+                            </div> 
+
+                            <div
+                                style={{
+                                    backgroundColor: '#6DB1BF',
+                                    padding: 5,
+                                    margin: 2,
+                                    borderRadius: 20,
+                                    fontSize: 10,
+                                    fontWeight: 700,
+                                    pointerEvents: 'all',
+                                    cursor: 'pointer'
+                                }}
+                                onClick={onReverse}
+                            > Reverse
+                            </div> 
                         </div>
                     }
                 </div>

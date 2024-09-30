@@ -120,6 +120,7 @@ export const PipelineUI = () => {
                 proOptions={proOptions}
                 snapGrid={[gridSize, gridSize]}
                 connectionLineType='default'
+                connectionMode='loose'
             >
                 <Background id='1' color="#999" gap={20} variant={BackgroundVariant.Dots} />
                 <Background id='2' color="#aaa" gap={100} variant={BackgroundVariant.Cross} />

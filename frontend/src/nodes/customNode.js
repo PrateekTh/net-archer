@@ -22,7 +22,8 @@ export const CustomNode = ({ id, data,
 				return (
 					<Handle 
 						id={`${id.id}-${key}`} key={i}
-						type="target"
+						// type="target"
+						type='source'
 						position= {Position.Left}
 						style = {{top:inputs[key]}}
 					>
@@ -36,7 +37,8 @@ export const CustomNode = ({ id, data,
 				return (
 					<Handle 
 						id={`${id.id}-${key}`} key={i}
-						type="target"
+						// type="target"
+						type='source'
 						position= {Position.Left}
 						style = {{top:userInputs[key]}}
 					>
