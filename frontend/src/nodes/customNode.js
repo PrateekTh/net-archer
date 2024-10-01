@@ -8,7 +8,8 @@ export const CustomNode = ({ id, data,
 	inputs = {"input_1": "30%", "input_2":"60%"}, 
 	outputs = {"output": "50%"}, 
 	body = <div>This is a default custom node</div>,
-	userInputs = {}}) => {
+	userInputs = {},
+	userOutputs = {}}) => {
 
 	const updateNodeInternals = useUpdateNodeInternals();
 		
@@ -22,7 +23,6 @@ export const CustomNode = ({ id, data,
 				return (
 					<Handle 
 						id={`${id.id}-${key}`} key={i}
-						// type="target"
 						type='source'
 						position= {Position.Left}
 						style = {{top:inputs[key]}}
@@ -37,7 +37,6 @@ export const CustomNode = ({ id, data,
 				return (
 					<Handle 
 						id={`${id.id}-${key}`} key={i}
-						// type="target"
 						type='source'
 						position= {Position.Left}
 						style = {{top:userInputs[key]}}
@@ -48,13 +47,14 @@ export const CustomNode = ({ id, data,
 
 			})}
 
-      <div>
-        <span className='title'>{title}</span>
-      </div>
+		<div>
+			<span className='title'>{title}</span>
+		</div>
 
-      <div className='node-body' style={{display:'flex', flexDirection:'column'}}>
-         {body}
-      </div>
+		<div className='node-body' style={{display:'flex', flexDirection:'column'}}>
+			{body}
+		</div>
+
 	  	{Object.keys(outputs).map((key, i) => {
 			return (
 				<Handle 
@@ -64,6 +64,20 @@ export const CustomNode = ({ id, data,
 					style = {{top:outputs[key]}}
 				>
 					<div  className="handle-label" style={{  transform:"translate(10%, 5px)"}}>{key}</div>
+				</Handle>
+			)
+		})}
+
+		{Object.keys(userOutputs).map((key, i) => {
+			return (
+				<Handle 
+					id={`${id.id}-${key}`} key={i}
+					type='source'
+					position= {Position.Right}
+					style = {{top:userOutputs[key]}}
+				>
+					<div  className="handle-label" style={{  transform:"translate(10%, 5px)"}}>{key}</div>
+
 				</Handle>
 			)
 		})}

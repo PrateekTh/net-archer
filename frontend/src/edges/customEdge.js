@@ -47,7 +47,7 @@ export const CustomEdge = ({
     function onLabelChange(e){
         setLabel(e.currentTarget.innerHTML);
         data.label = e.currentTarget.innerHTML;
-        console.log(data);
+        // console.log(data);
     }
 
     function onToggleBi(){
@@ -95,7 +95,7 @@ export const CustomEdge = ({
                     className="nodrag nopan"
                     contentEditable
                     dangerouslySetInnerHTML= {{__html: label}}
-                    onInput={(e)=>onLabelChange(e)}
+                    onBlur={(e)=>onLabelChange(e)}
                     spellCheck={false}
                     suppressContentEditableWarning={true}
                 >
