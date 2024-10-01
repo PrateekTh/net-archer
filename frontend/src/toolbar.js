@@ -15,9 +15,6 @@ export const PipelineToolbar = () => {
                 <DraggableNode type='image' label='Image' />
                 <DraggableNode type='newText' label='Text' />
                 <DraggableNode type='mlModel' label='ML Model' />
-                <DraggableNode type='dataset' label='Dataset' />
-                <DraggableNode type='collection' label='Collection' />
-                <DraggableNode type='func' label='Function' />
             </div>
         </div>
     );

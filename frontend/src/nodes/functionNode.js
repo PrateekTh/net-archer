@@ -6,13 +6,13 @@ import { adjustTextBox } from "../modules/textarea";
 
 export const FunctionNode = (id, data) => {
 
-    const defaultInput = {"file":"50%"}
+    // const defaultInput = {"file":"50%"}
 
     const [file, setFile] = useState(null);
     
     function onFileChange(e) {
-        console.log(e.target.files[0])
-        if(e.target.files[0] !=undefined){
+        console.log(file)
+        if(e.target.files[0] !== undefined){
             setFile(e.target.files[0])
         } else {
             setFile(null)

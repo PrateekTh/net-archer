@@ -26,31 +26,35 @@ export const useStore = create((set, get) => ({
         });
     },
     onNodesChange: (changes) => {
-      set({
-        nodes: applyNodeChanges(changes, get().nodes),
-      });
+        set({
+            nodes: applyNodeChanges(changes, get().nodes),
+        });
     },
     onEdgesChange: (changes) => {
-      set({
-        edges: applyEdgeChanges(changes, get().edges),
-      });
+        set({
+            edges: applyEdgeChanges(changes, get().edges),
+        });
     },
     onConnect: (connection) => {
         // Connection is the minimal setup for an edge (Source & target info)
-      set({
-        // Here it is, each new edge enters with these props
-        // Make the type into custom, and add any required details into data
-        edges: addEdge({...connection, type: 'custom', data: { label: "Edit"}}, get().edges),
-      });
+        set({
+            // Here it is, each new edge enters with these props
+            // Make the type into custom, and add any required details into data
+            edges: addEdge({...connection, type: 'custom', 
+                markerEnd: {type: MarkerType.ArrowClosed, strokeWidth: 4}, 
+                markerStart: {type: MarkerType.ArrowClosed, strokeWidth: 4}, 
+                data: { label: "Edit", anim: false, bi: false}}, 
+                get().edges),
+        });
     },
     updateNodeField: (nodeId, fieldName, fieldValue) => {
-      set({
-        nodes: get().nodes.map((node) => {
-          if (node.id === nodeId) {
-            node.data = { ...node.data, [fieldName]: fieldValue };
-          }
-          return node;
-        }),
-      });
+        set({
+            nodes: get().nodes.map((node) => {
+            if (node.id === nodeId) {
+                node.data = { ...node.data, [fieldName]: fieldValue };
+            }
+            return node;
+            }),
+        });
     },
   }));

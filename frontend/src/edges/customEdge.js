@@ -5,6 +5,7 @@ import {
     BaseEdge,
     useReactFlow,
     addEdge,
+    MarkerType,
 } from 'reactflow';
 
 export const CustomEdge = ({
@@ -14,11 +15,12 @@ export const CustomEdge = ({
     targetX,
     targetY,
     selected,
-    animated,
+    markerEnd,
+    markerStart,
     sourcePosition,
     targetPosition,
     data }) => {
-
+    
     const [edgePath, labelX, labelY] = getBezierPath({
         sourceX,
         sourceY,
@@ -28,10 +30,9 @@ export const CustomEdge = ({
         targetPosition,
     });
 
-    // build the component to set properties for the baseEdge, with the custom label
-    // custom label settings contains: + 3-option toggle : bi-directional - left to right - right to left; + animated or not; + delete btn
-
-    const [anim, setAnim] = useState(false);
+    const [bi, setBi] = useState(data.bi);
+    const [anim, setAnim] = useState(data.anim);
+    const [label, setLabel] = useState(data.label);
     const { getEdge, getEdges, setEdges } = useReactFlow();
 
     function onDelete(){
@@ -39,12 +40,19 @@ export const CustomEdge = ({
     }
 
     function onToggleAnimation(){
+        data.anim = !anim;
         setAnim(!anim);
     }
 
     function onLabelChange(e){
+        setLabel(e.currentTarget.innerHTML);
         data.label = e.currentTarget.innerHTML;
-        // console.log(data);
+        console.log(data);
+    }
+
+    function onToggleBi(){
+        data.bi = !bi;
+        setBi(!bi);
     }
 
     function onReverse(){
@@ -55,25 +63,24 @@ export const CustomEdge = ({
         temp.target = edge.source;
         temp.targetHandle = edge.sourceHandle;
         temp.id = `reactflow__edge-${temp.source}${temp.sourceHandle}-${temp.target}${temp.targetHandle}`;
-        
+    
         let edges = getEdges();
+
+        //add the new, reversed temp edge
         edges = addEdge(temp, edges);
 
-        edges.filter((e) => e.id !== id);
+        //set new edges, deleting the current edge
         setEdges(() => edges.filter((edge) => edge.id !== id));
     }
+
     return (
         <>
-            <BaseEdge id={id} path={edgePath} 
-                style={{
-                    strokeOpacity: 0.6,
-                }}
-            />
+            <BaseEdge id={id} path={edgePath} style={{strokeOpacity: 0.5}} markerEnd={markerEnd} markerStart={data.bi? markerStart:""} />
 
             {[...Array(15)].map((x, i) =>{
-                if(anim) return( <circle key={i} r="2" fill="#6DB1BF"><animateMotion dur="4s" begin={`${i/3}s`} repeatCount="indefinite" path={edgePath} /></circle>)}
+                if(anim) return <circle key={i} r="2" fill="#6DB1BF"><animateMotion dur="4s" begin={`${i/3}s`} repeatCount="indefinite" path={edgePath} /></circle>}
             )}
-
+            
             <EdgeLabelRenderer>
                 <div
                     style={{
@@ -87,9 +94,10 @@ export const CustomEdge = ({
                     }}
                     className="nodrag nopan"
                     contentEditable
-                    html={data.label}
-
+                    dangerouslySetInnerHTML= {{__html: label}}
                     onInput={(e)=>onLabelChange(e)}
+                    spellCheck={false}
+                    suppressContentEditableWarning={true}
                 >
                 </div>                
                 
@@ -99,52 +107,28 @@ export const CustomEdge = ({
                 }}>
                     {
                         selected &&
-                        <div className="edge-btns" style={{
-                                   
-                                    display: 'flex'
-                                    }}>
-                            <div
-                                style={{
-                                    backgroundColor: '#F39A9D',
-                                    padding: 10,
-                                    margin: 2,
-                                    borderRadius: 20,
-                                    fontSize: 10,
-                                    fontWeight: 700,
-                                    pointerEvents: 'all',
-                                    cursor: 'pointer'
-                                }}
+                        <div className="edge-btn-box" style={{display: 'flex'}}>
+                            <div className='edge-btn'
+                                style={{backgroundColor: '#F39A9D',padding: 10}}
                                 onClick={onDelete}
                             >  </div>
                             
-                            <div
-                                style={{
-                                    backgroundColor: '#6DB1BF',
-                                    padding: 5,
-                                    margin: 2,
-                                    borderRadius: 20,
-                                    fontSize: 10,
-                                    fontWeight: 700,
-                                    pointerEvents: 'all',
-                                    cursor: 'pointer'
-                                }}
+                            <div className='edge-btn'
+                                style={{backgroundColor: '#6DB1BF'}}
                                 onClick={onToggleAnimation}
                             > Animate
                             </div> 
 
-                            <div
-                                style={{
-                                    backgroundColor: '#6DB1BF',
-                                    padding: 5,
-                                    margin: 2,
-                                    borderRadius: 20,
-                                    fontSize: 10,
-                                    fontWeight: 700,
-                                    pointerEvents: 'all',
-                                    cursor: 'pointer'
-                                }}
+                            <div className='edge-btn'
+                                style={{backgroundColor: '#6DB1BF'}}
                                 onClick={onReverse}
-                            > Reverse
+                            > Rev
+                            </div> 
+
+                            <div className='edge-btn'
+                                style={{backgroundColor: '#6DB1BF'}}
+                                onClick={onToggleBi}
+                            > {'<>'}
                             </div> 
                         </div>
                     }
