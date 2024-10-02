@@ -13,7 +13,8 @@ export const SubmitButton = () => {
     }, [alert]);
 
     const handleSubmit = async () => {
-        const result = reactFlow.toObject()
+        const result = reactFlow.toObject();
+        console.log(result)
         try{
             const endpoint = "http://127.0.0.1:8000/pipelines/parse";
             const response = await fetch(endpoint, {

@@ -9,6 +9,7 @@ import { ImageNode } from './imageNode';
 import { NewTextNode } from './newTextNode';
 import { MLNode } from './MLModel';
 import { ServerNode } from './serverNode';
+import { DatabaseNode } from './databaseNode';
 // import { FunctionNode } from './functionNode';
 
-export {InputNode, LLMNode, OutputNode, TextNode, ImageNode, NewTextNode, MLNode, ServerNode, CustomNode};
+export {InputNode, LLMNode, OutputNode, TextNode, ImageNode, NewTextNode, MLNode, DatabaseNode, ServerNode, CustomNode};

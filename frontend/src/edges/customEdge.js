@@ -114,19 +114,16 @@ export const CustomEdge = ({
                             >  </div>
                             
                             <div className='edge-btn'
-                                style={{backgroundColor: '#6DB1BF'}}
                                 onClick={onToggleAnimation}
                             > Animate
                             </div> 
 
                             <div className='edge-btn'
-                                style={{backgroundColor: '#6DB1BF'}}
                                 onClick={onReverse}
                             > Rev
                             </div> 
 
                             <div className='edge-btn'
-                                style={{backgroundColor: '#6DB1BF'}}
                                 onClick={onToggleBi}
                             > {'<>'}
                             </div> 

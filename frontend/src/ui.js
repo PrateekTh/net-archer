@@ -7,7 +7,7 @@ import ReactFlow, { Controls, Background, MiniMap, Panel, BackgroundVariant } fr
 import { useStore } from './store';
 import { useShallow } from 'zustand/shallow';
 
-import { InputNode, LLMNode, OutputNode, TextNode, CustomNode, ImageNode, NewTextNode, MLNode, ServerNode} from './nodes/nodebase';
+import { InputNode, LLMNode, OutputNode, TextNode, CustomNode, ImageNode, NewTextNode, MLNode, ServerNode, DatabaseNode} from './nodes/nodebase';
 import { CustomEdge } from './edges/customEdge'
 
 import 'reactflow/dist/style.css';
@@ -16,15 +16,16 @@ import { SubmitButton } from './submit';
 const gridSize = 15;
 const proOptions = { hideAttribution: true };
 const nodeTypes = {
-  customInput: InputNode,
-  llm: LLMNode,
-  customOutput: OutputNode,
-  text: TextNode,
-  customNode: CustomNode,
-  image: ImageNode,
-  mlModel: MLNode,
-  newText: NewTextNode,
-  server: ServerNode
+customInput: InputNode,
+llm: LLMNode,
+customOutput: OutputNode,
+text: TextNode,
+customNode: CustomNode,
+image: ImageNode,
+mlModel: MLNode,
+newText: NewTextNode,
+server: ServerNode,
+database: DatabaseNode,
 };
 
 const edgeTypes = {
@@ -47,49 +48,49 @@ export const PipelineUI = () => {
     const reactFlowWrapper = useRef(null);
     const [reactFlowInstance, setReactFlowInstance] = useState(null);
     const {
-      nodes,
-      edges,
-      getNodeID,
-      addNode,
-      onNodesChange,
-      onEdgesChange,
-      onConnect
+        nodes,
+        edges,
+        getNodeID,
+        addNode,
+        onNodesChange,
+        onEdgesChange,
+        onConnect
     } = useStore( useShallow(selector));
 
     const getInitNodeData = (nodeID, type) => {
-      let nodeData = { id: nodeID, nodeType: `${type}` };
-      return nodeData;
+        let nodeData = { id: nodeID, nodeType: `${type}`, tag:"" };
+        return nodeData;
     }
 
     const onDrop = useCallback(
         (event) => {
-          event.preventDefault();
-    
-          const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
-          if (event?.dataTransfer?.getData('application/reactflow')) {
-            const appData = JSON.parse(event.dataTransfer.getData('application/reactflow'));
-            const type = appData?.nodeType;
-      
-            // check if the dropped element is valid
-            if (typeof type === 'undefined' || !type) {
-              return;
-            }
-      
-            const position = reactFlowInstance.project({
-              x: event.clientX - reactFlowBounds.left,
-              y: event.clientY - reactFlowBounds.top,
-            });
+            event.preventDefault();
+        
+            const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
+            if (event?.dataTransfer?.getData('application/reactflow')) {
+                const appData = JSON.parse(event.dataTransfer.getData('application/reactflow'));
+                const type = appData?.nodeType;
+        
+                // check if the dropped element is valid
+                if (typeof type === 'undefined' || !type) {
+                    return;
+                }
+        
+                const position = reactFlowInstance.project({
+                    x: event.clientX - reactFlowBounds.left,
+                    y: event.clientY - reactFlowBounds.top,
+                });
 
-            const nodeID = getNodeID(type);
-            const newNode = {
-              id: nodeID,
-              type,
-              position,
-              data: getInitNodeData(nodeID, type),
-            };
-      
-            addNode(newNode);
-          }
+                const nodeID = getNodeID(type);
+                const newNode = {
+                    id: nodeID,
+                    type,
+                    position,
+                    data: getInitNodeData(nodeID, type),
+                };
+        
+                addNode(newNode);
+            }
         },
         [reactFlowInstance]
     );
@@ -101,7 +102,6 @@ export const PipelineUI = () => {
 
     return (
         <>
-
         {/* Main Container */}
         <div ref={reactFlowWrapper} style={{  flex: "1 1 auto"}}>
             <ReactFlow
@@ -126,7 +126,7 @@ export const PipelineUI = () => {
                 <Controls />
                 <MiniMap />
                 <Panel position="bottom-center">
-                  <SubmitButton/>
+                    <SubmitButton/>
                 </Panel>
             </ReactFlow>
         </div>

@@ -108,5 +108,5 @@ export function getCaretOffset(element, position){
 
 export function adjustTextBox(element) {
   element.style.height = "auto";
-  element.style.height = `${element.scrollHeight}px`;
+  element.style.height = `${element.scrollHeight - 10}px`;
 }

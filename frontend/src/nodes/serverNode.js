@@ -5,7 +5,7 @@ import { CustomNode } from "./customNode";
 import { useReactFlow } from 'reactflow';
 import { getCaretOffset, adjustTextBox} from "../modules/textarea"
 
-export const ServerNode = (id, data) => {
+export const ServerNode = ({id, data}) => {
 
     const inputs = {"system": "53px"};
     const outputs = {};
@@ -31,7 +31,7 @@ export const ServerNode = (id, data) => {
 
         if(res2) {
         res2.forEach(el => {
-            if(el[2] == '\\'){
+            if(el[2] === '\\'){
                 let temp = el.substring(3, el.length - 2).trim();
                 // User Inputs
                 if(temp.length){
@@ -40,7 +40,7 @@ export const ServerNode = (id, data) => {
                         mpInputs[temp] = offset * 0.5 * (1 + 1/reactFlow.getZoom());
                     }else { mpInputs[temp] = userInputs[temp];}
                 }
-            } else if(el[2] == '\/'){
+            } else if(el[2] === '\/'){
             //  User Outputs
                 let temp = el.substring(3, el.length - 2).trim();
                 if(temp.length){
@@ -67,13 +67,15 @@ export const ServerNode = (id, data) => {
         <label>
           <textarea 
             className='text-box'
+            style={{backgroundColor: 'transparent', border:'none'}}
             rows="1" 
-            placeholder = {"System"}
+            placeholder = {"Description"}
             ></textarea>
           
           <br/>
           <textarea 
             ref = {textBox}
+            style={{backgroundColor: 'rgba(255,255,255, 0.6)', pointerEvents:'all'}}
             className='text-box'
             spellCheck={false}
             rows="1" 
@@ -84,5 +86,5 @@ export const ServerNode = (id, data) => {
     </div>
   );
 
-  return CustomNode({id, data, title, inputs, outputs, body, userInputs, userOutputs});
+  return CustomNode(id, data, title, inputs, outputs, body, userInputs, userOutputs);
 }
