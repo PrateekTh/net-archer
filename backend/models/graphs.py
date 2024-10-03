@@ -1,8 +1,4 @@
-from fastapi import FastAPI, Form, Request
-from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from graph import checkDAG
-from routes.route import router
 
 class Coordinates(BaseModel) : 
     x: float
@@ -33,14 +29,3 @@ class Graph(BaseModel) :
     edges: list[Edge]
     nodes: list[Node]
     viewport: Coordinates
-
-app = FastAPI()
-app.add_middleware(
-    CORSMiddleware, 
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-app.include_router(router)

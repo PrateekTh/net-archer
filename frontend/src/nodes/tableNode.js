@@ -5,10 +5,10 @@ import { CustomNode } from "./customNode";
 import { useReactFlow } from 'reactflow';
 import { getCaretOffset, adjustTextBox} from "../modules/textarea"
 
-export const NewTextNode = (id, data) => {
+export const TableNode = ({id, data}) => {
   
-  const title = "Text";
-  const inputs = {"metadata": "30px"};
+  const title = "Table";
+  const inputs = {"database": "30px"};
   const outputs = {"output": "50%"};
 
   const reactFlow = useReactFlow();
@@ -54,7 +54,9 @@ export const NewTextNode = (id, data) => {
           <br/>
           <textarea ref = {textBox}
             className='text-box'
+            style={{backgroundColor: 'rgba(256,256,256, 0.7)', borderWidth:'1px', margin:'5px', width:'120px'}}
             name='input'
+            spellCheck={false}
             rows="1" 
             value = {currText}
             onChange={handleTextChange}

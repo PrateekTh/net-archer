@@ -7,7 +7,7 @@ import ReactFlow, { Controls, Background, MiniMap, Panel, BackgroundVariant } fr
 import { useStore } from './store';
 import { useShallow } from 'zustand/shallow';
 
-import { InputNode, LLMNode, OutputNode, TextNode, CustomNode, ImageNode, NewTextNode, MLNode, ServerNode, DatabaseNode} from './nodes/nodebase';
+import { InputNode, LLMNode, OutputNode, TextNode, CustomNode, ImageNode, NewTextNode, MLNode, ServerNode, DatabaseNode, ClientNode, TableNode} from './nodes/nodebase';
 import { CustomEdge } from './edges/customEdge'
 
 import 'reactflow/dist/style.css';
@@ -16,16 +16,18 @@ import { SubmitButton } from './submit';
 const gridSize = 15;
 const proOptions = { hideAttribution: true };
 const nodeTypes = {
-customInput: InputNode,
-llm: LLMNode,
-customOutput: OutputNode,
-text: TextNode,
-customNode: CustomNode,
-image: ImageNode,
-mlModel: MLNode,
-newText: NewTextNode,
-server: ServerNode,
-database: DatabaseNode,
+    customInput: InputNode,
+    llm: LLMNode,
+    customOutput: OutputNode,
+    text: TextNode,
+    customNode: CustomNode,
+    image: ImageNode,
+    mlModel: MLNode,
+    newText: NewTextNode,
+    server: ServerNode,
+    database: DatabaseNode,
+    client: ClientNode,
+    table: TableNode,
 };
 
 const edgeTypes = {

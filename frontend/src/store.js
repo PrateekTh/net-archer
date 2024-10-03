@@ -43,7 +43,7 @@ export const useStore = create((set, get) => ({
             edges: addEdge({...connection, type: 'custom', 
                 markerEnd: {type: MarkerType.ArrowClosed, strokeWidth: 4}, 
                 markerStart: {type: MarkerType.ArrowClosed, strokeWidth: 4}, 
-                data: { label: "Edit", anim: false, bi: false}}, 
+                data: { label: "...", anim: false, bi: false}}, 
                 get().edges),
         });
     },
