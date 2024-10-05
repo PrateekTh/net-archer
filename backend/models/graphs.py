@@ -5,8 +5,12 @@ class Coordinates(BaseModel) :
     y: float
     zoom: float  | None = None
 
-class Edge(BaseModel) : 
-    animated: bool
+class Marker(BaseModel) :
+    type: str
+    strokeWidth: int
+
+class Edge(BaseModel, extra = 'allow') : 
+    animated: bool | None = None
     id: str
     markerEnd: dict[str, str]
     source: str
@@ -14,8 +18,10 @@ class Edge(BaseModel) :
     target: str
     targetHandle: str
     type:str
+    markerEnd: Marker  | None = None
+    markerStart: Marker  | None = None
 
-class Node(BaseModel) :
+class Node(BaseModel, extra = 'allow') :
     data: dict[str, str]
     dragging: bool | None = None
     height: float

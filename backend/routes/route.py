@@ -17,11 +17,12 @@ def get_graph():
     return graphs
 
 @router.post('/graph/save')
-async def post_graph(request: Request):
-    request_json = await request.json()
-    graph = Graph.model_validate(request_json)
-    # collection_name.insert_one()
-    return {"num_nodes":len(graph.nodes), "num_edges":len(graph.edges)}
+async def post_graph(request: Graph):
+    # request_json = await request.json()
+    graph = Graph.model_validate(request)    
+    collection_name.insert_one(graph.model_dump())
+    # temp = individual_serial(collection_name.find({"_id": _id.inserted_id}))
+    return { "status":"ok"}
 
 @router.post('/pipelines/parse')
 async def validate_pipeline(request:Request):
