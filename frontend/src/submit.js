@@ -1,5 +1,5 @@
 // submit.js
-
+import { backend_root } from "./vars";
 import { useState, useEffect } from "react";
 import { useReactFlow } from "reactflow";
 import { Alert } from "./alert";
@@ -16,7 +16,7 @@ export const SubmitButton = () => {
         const result = reactFlow.toObject();
         console.log(result)
         try{
-            const endpoint = "http://127.0.0.1:8000/pipelines/parse";
+            const endpoint = backend_root + "/graph/parse";
             const response = await fetch(endpoint, {
                 method:'POST',
                 headers: {

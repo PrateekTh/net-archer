@@ -9,7 +9,8 @@ router = APIRouter()
 
 @router.get('/')
 def get_default():
-    return {'Ping': 'Pong'}
+    graph = individual_serial(collection_name.find_one({"_id": ObjectId("67012277236524700a08e5d6")}))
+    return { "status":"ok", "data": graph }
 
 # get all graphs
 @router.get('/all')
@@ -20,7 +21,7 @@ def get_all():
 # get a single graph with id == id
 @router.get('/{graph_id}')
 def get_graph(graph_id : str):
-    graph = list_serial(collection_name.find({"_id": ObjectId(graph_id)}))
+    graph = individual_serial(collection_name.find_one({"_id": ObjectId(graph_id)}))
     return { "status":"ok", "data": graph }
 
 #add a new graph

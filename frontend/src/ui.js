@@ -2,7 +2,7 @@
 // Displays the drag-and-drop UI
 // --------------------------------------------------
 
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 import ReactFlow, { Controls, Background, MiniMap, Panel, BackgroundVariant } from 'reactflow';
 import { useStore } from './store';
 import { useShallow } from 'zustand/shallow';
@@ -12,6 +12,8 @@ import { CustomEdge } from './edges/customEdge'
 
 import 'reactflow/dist/style.css';
 import { SubmitButton } from './submit';
+import { getGraph } from './modules/connection';
+import { FunctionPane } from './functionPane';
 
 const gridSize = 15;
 const proOptions = { hideAttribution: true };
@@ -33,7 +35,6 @@ const nodeTypes = {
 const edgeTypes = {
     custom: CustomEdge,
     default: 'default',
-
 }
 
 const selector = (state) => ({
@@ -128,6 +129,7 @@ export const PipelineUI = () => {
                 <Controls />
                 <MiniMap />
                 <Panel position="bottom-center">
+                    <FunctionPane/>
                     <SubmitButton/>
                 </Panel>
             </ReactFlow>

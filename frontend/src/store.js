@@ -1,6 +1,7 @@
 // store.js
 
 import { create } from "zustand";
+import { getGraph } from "./modules/connection";
 import {
     addEdge,
     applyNodeChanges,
@@ -10,11 +11,9 @@ import {
 
 
 console.log("Creating Store")
-// get response from server route into flow (User's entry point)
-const url = new URL(window.location.href)
-console.log(url.searchParams.get("id"))
 
-const flow = {
+
+let flow = {
     "nodes": [
         {
             "width": 323,
@@ -90,6 +89,11 @@ const flow = {
         "zoom": 1
     }
 };
+
+// const graph = await getGraph()
+// // console.log(graph)
+// flow = graph? graph : flow;
+
 
 export const useStore = create((set, get) => ({
     id: flow.id || null,
