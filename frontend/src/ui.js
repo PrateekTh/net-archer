@@ -11,9 +11,9 @@ import { InputNode, LLMNode, OutputNode, TextNode, CustomNode, ImageNode, NewTex
 import { CustomEdge } from './edges/customEdge'
 
 import 'reactflow/dist/style.css';
-import { SubmitButton } from './submit';
-import { getGraph } from './modules/connection';
-import { FunctionPane } from './functionPane';
+import { SubmitButton } from './functions/submit';
+import { FunctionPane } from './functions/functionPane';
+import { SaveButton } from './functions/save';
 
 const gridSize = 15;
 const proOptions = { hideAttribution: true };
@@ -128,8 +128,9 @@ export const PipelineUI = () => {
 
                 <Controls />
                 <MiniMap />
-                <Panel position="bottom-center">
+                <Panel position="bottom-center" style={{display:"flex"}}>
                     <FunctionPane/>
+                    <SaveButton/>
                     <SubmitButton/>
                 </Panel>
             </ReactFlow>

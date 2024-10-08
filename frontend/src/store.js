@@ -100,6 +100,8 @@ export const useStore = create((set, get) => ({
     nodes: flow.nodes || [],
     edges: flow.edges || [],
 
+    setID: (new_id) => set((state) => ({ id: new_id })),
+
     getNodeID: (type) => {
         const newIDs = {...get().nodeIDs};
         if (newIDs[type] === undefined) {

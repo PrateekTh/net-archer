@@ -1,5 +1,5 @@
 // submit.js
-import { backend_root } from "./vars";
+import { backend_root } from "../vars";
 import { useState, useEffect } from "react";
 import { useReactFlow } from "reactflow";
 import { Alert } from "./alert";
@@ -21,7 +21,7 @@ export const SubmitButton = () => {
                 method:'POST',
                 headers: {
                     "Accept": "application/json",
-                    "ContentType":"application/json"
+                    "Content-Type":"application/json"
                 },
                 body: JSON.stringify(result)
             })
@@ -38,7 +38,7 @@ export const SubmitButton = () => {
 
     return (<>
             <div>
-                <button type="submit" onClick={handleSubmit}> Validate </button>
+                <button type="submit" onClick={handleSubmit}> Submit </button>
             </div>
             {alert && Alert({type: 'validate', message: alert})}
         </>
