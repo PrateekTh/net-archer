@@ -1,7 +1,6 @@
 // store.js
 
 import { create } from "zustand";
-import { getGraph } from "./modules/connection";
 import {
     addEdge,
     applyNodeChanges,
@@ -102,6 +101,9 @@ export const useStore = create((set, get) => ({
 
     setID: (new_id) => set((state) => ({ id: new_id })),
 
+    // crazy gymnastics going on here
+    resetNodeIDs: () => set({nodeIDs: undefined}),
+
     getNodeID: (type) => {
         const newIDs = {...get().nodeIDs};
         if (newIDs[type] === undefined) {
@@ -111,6 +113,7 @@ export const useStore = create((set, get) => ({
         set({nodeIDs: newIDs});
         return `${type}-${newIDs[type]}`;
     },
+
     addNode: (node) => {
         set({
             nodes: [...get().nodes, node]

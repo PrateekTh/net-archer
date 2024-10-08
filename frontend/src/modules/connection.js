@@ -19,7 +19,7 @@ const getGraph = async () => {
     }
 
     // if the id was not specified, i.e. the graph fetched is the default graph from the server, set id = null
-    if(!id && graph.id) graph.id = null;
+    if(graph) graph.id = id? graph.id : null;
     return graph;
 }
 
