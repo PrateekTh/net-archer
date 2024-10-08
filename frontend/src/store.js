@@ -11,6 +11,7 @@ import {
 
 console.log("Creating Store")
 
+// flow - an offline default starting graph when the backend server is down (decent stuff)
 
 let flow = {
     "nodes": [
@@ -89,11 +90,6 @@ let flow = {
     }
 };
 
-// const graph = await getGraph()
-// // console.log(graph)
-// flow = graph? graph : flow;
-
-
 export const useStore = create((set, get) => ({
     id: flow.id || null,
     nodes: flow.nodes || [],
@@ -103,6 +99,7 @@ export const useStore = create((set, get) => ({
 
     // crazy gymnastics going on here
     resetNodeIDs: () => set({nodeIDs: undefined}),
+    resetEdges: () => set({edges: []}),
 
     getNodeID: (type) => {
         const newIDs = {...get().nodeIDs};

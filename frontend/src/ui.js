@@ -12,7 +12,7 @@ import { CustomEdge } from './edges/customEdge'
 
 import 'reactflow/dist/style.css';
 import { SubmitButton } from './functions/submit';
-import { FunctionPane } from './functions/functionPane';
+import { InitLoader } from './functions/initLoader';
 import { SaveButton } from './functions/save';
 
 const gridSize = 15;
@@ -129,7 +129,7 @@ export const PipelineUI = () => {
                 <Controls />
                 <MiniMap />
                 <Panel position="bottom-center" style={{display:"flex"}}>
-                    <FunctionPane/>
+                    <InitLoader/>
                     <SaveButton/>
                     <SubmitButton/>
                 </Panel>
