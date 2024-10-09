@@ -26,7 +26,7 @@ export const SaveButton = () => {
 
     return (<>
             <div>
-                <button type="Save" onClick={handleSave}> Save </button>
+                <button type="submit" style={{background: "rgb(91, 103, 194)"}}  onClick={handleSave}> Save </button>
             </div>
         </>
     );

@@ -14,6 +14,7 @@ import 'reactflow/dist/style.css';
 import { SubmitButton } from './functions/submit';
 import { InitLoader } from './functions/initLoader';
 import { SaveButton } from './functions/save';
+import { ShareButton } from './functions/share';
 
 const gridSize = 15;
 const proOptions = { hideAttribution: true };
@@ -128,10 +129,11 @@ export const PipelineUI = () => {
 
                 <Controls />
                 <MiniMap />
-                <Panel position="bottom-center" style={{display:"flex"}}>
+                <Panel className='function-pane' position="top-right">
                     <InitLoader/>
                     <SaveButton/>
                     <SubmitButton/>
+                    <ShareButton/>
                 </Panel>
             </ReactFlow>
         </div>
