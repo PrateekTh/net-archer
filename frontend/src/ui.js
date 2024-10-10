@@ -7,7 +7,7 @@ import ReactFlow, { Controls, Background, MiniMap, Panel, BackgroundVariant } fr
 import { useStore } from './store';
 import { useShallow } from 'zustand/shallow';
 
-import { InputNode, LLMNode, TextNode, CustomNode, ImageNode, NewTextNode, MLNode, ServerNode, DatabaseNode, ClientNode, TableNode, LoadBalancerNode, UtilityNode, NoteNode} from './nodes/nodebase';
+import { InputNode, LLMNode, TextNode, CustomNode, ImageNode, NewTextNode, MLNode, ServerNode, DatabaseNode, ClientNode, TableNode, LoadBalancerNode, UtilityNode, NoteNode, GroupNode} from './nodes/nodebase';
 import { CustomEdge } from './edges/customEdge'
 
 import 'reactflow/dist/style.css';
@@ -15,6 +15,7 @@ import { SubmitButton } from './functions/submit';
 import { InitLoader } from './functions/initLoader';
 import { SaveButton } from './functions/save';
 import { ShareButton } from './functions/share';
+import groupNode from './nodes/groupNode';
 
 const gridSize = 15;
 const proOptions = { hideAttribution: true };
@@ -33,6 +34,7 @@ const nodeTypes = {
     loadBalancer: LoadBalancerNode,
     utility: UtilityNode,
     note: NoteNode,
+    group: GroupNode
 };
 
 const edgeTypes = {

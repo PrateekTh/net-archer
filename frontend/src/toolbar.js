@@ -21,6 +21,7 @@ export const PipelineToolbar = () => {
                 <DraggableNode type='loadBalancer' label='Load Balancer' />
                 <DraggableNode type='utility' label='Utility' />
                 <DraggableNode type='note' label='Note' />
+                <DraggableNode type='group' label='Group' />
             </div>
         </div>
     );
