@@ -44,6 +44,7 @@ textarea::selection{
 }
 
 button, .custom-file-upload{
+  user-select: none;
   margin: 0.5rem;
   padding: 1rem 2rem;
   border-radius: 10px;
@@ -68,6 +69,46 @@ button:hover{
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/* reactflow customisation ------------------------------------*/
+
+.react-flow__node-group {
+  overflow: hidden;
+
+  border-radius: 10px !important;
+  padding: 0 !important;
+  min-width: 100px !important;
+  min-height: 100px !important;
+  border: 1px solid rgba(31, 197, 168, 0.6) !important; 
+}
+
+.react-flow .react-flow__handle {
+  width: 4px;
+  height: 4px;
+  border-radius: 4px;
+  background-color: rgb(117, 227, 209);
+  box-shadow: rgb(7, 151, 127) 0px 0px 2px 1px;
+
+  border: 2px solid white;
+}
+
+.react-flow .react-flow__handle-left {
+  left: -5px;
+}
+
+.react-flow .react-flow__handle-right {
+  right: -5px;
+}
+
+.handle-label{
+  font-family: 'frutiger', sans-serif;
+  border-radius:5px;
+  padding: 0px 5px;
+  position: absolute;
+  white-space: nowrap;
+  font-size: 12px;
+  transform:translate( -100%, 5px);
 }
 
 /* file upload button ------------------------------------*/
@@ -195,43 +236,6 @@ input[type=file]::file-selector-button {
   padding: none;
 }
 
-.react-flow__node-group {
-  overflow: hidden;
-
-  border-radius: 10px !important;
-  padding: 0 !important;
-  min-width: 100px !important;
-  min-height: 100px !important;
-  border: 1px solid rgba(31, 197, 168, 0.6) !important; 
-}
-
-.react-flow .react-flow__handle {
-  width: 4px;
-  height: 4px;
-  border-radius: 4px;
-  background-color: rgb(117, 227, 209);
-  box-shadow: rgb(7, 151, 127) 0px 0px 2px 1px;
-
-  border: 2px solid white;
-}
-
-.react-flow .react-flow__handle-left {
-  left: -5px;
-}
-
-.react-flow .react-flow__handle-right {
-  right: -5px;
-}
-
-.handle-label{
-  font-family: 'frutiger', sans-serif;
-  border-radius:5px;
-  padding: 0px 5px;
-  position: absolute;
-  white-space: nowrap;
-  font-size: 12px;
-  transform:translate( -100%, 5px);
-}
 
 .text-box{
   pointer-events: all;
@@ -342,11 +346,11 @@ input[type=file]::file-selector-button {
   top:10%;
   display: flex;
   flex-direction: column;
-  width:90%;
+  width:100%;
   border-radius: 20px;
   backdrop-filter: blur(5px);
-  /* border: 1px solid black; */
-  padding:10px;
+  border: 2px solid rgba(162, 162, 162, 0.1);
+  padding:6px;
 
   animation: 0.5s ease-in-out 0s 1 share-menu-animation;
 }

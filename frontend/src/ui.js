@@ -11,11 +11,8 @@ import { InputNode, LLMNode, TextNode, CustomNode, ImageNode, NewTextNode, MLNod
 import { CustomEdge } from './edges/customEdge'
 
 import 'reactflow/dist/style.css';
-import { SubmitButton } from './functions/submit';
-import { InitLoader } from './functions/initLoader';
-import { SaveButton } from './functions/save';
-import { ShareButton } from './functions/share';
-import groupNode from './nodes/groupNode';
+
+import { InitLoader, SaveButton, ClearButton, SubmitButton, ShareButton } from './functions/index'
 
 const gridSize = 15;
 const proOptions = { hideAttribution: true };
@@ -127,6 +124,7 @@ export const PipelineUI = () => {
                 snapGrid={[gridSize, gridSize]}
                 connectionLineType='default'
                 connectionMode='loose'
+                deleteKeyCode={["Delete", "Backspace"]}
             >
                 <Background id='1' color="#999" gap={20} variant={BackgroundVariant.Dots} />
                 <Background id='2' color="#aaa" gap={100} variant={BackgroundVariant.Cross} />
@@ -135,8 +133,9 @@ export const PipelineUI = () => {
                 <MiniMap />
                 <Panel className='function-pane' position="top-right">
                     <InitLoader/>
+                    <ClearButton/>
+                    {/* <SubmitButton/> */}
                     <SaveButton/>
-                    <SubmitButton/>
                     <ShareButton/>
                 </Panel>
             </ReactFlow>
