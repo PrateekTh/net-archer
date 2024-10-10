@@ -23,7 +23,7 @@ export const CustomNode = (
 			{Object.keys(inputs).map((key, i) => {
 				return (
 					<Handle 
-						id={`${id}-${key}`} key={i}
+						id={`${id}-l-${key}`} key={i}
 						type='source'
 						position= {Position.Left}
 						style = {{top:inputs[key]}}
@@ -37,7 +37,7 @@ export const CustomNode = (
 			{Object.keys(userInputs).map((key, i) => {
 				return (
 					<Handle 
-						id={`${id}-${key}`} key={i}
+						id={`${id}-l-${key}`} key={i}
 						type='source'
 						position= {Position.Left}
 						style = {{top:userInputs[key]}}
@@ -59,7 +59,7 @@ export const CustomNode = (
 	  	{Object.keys(outputs).map((key, i) => {
 			return (
 				<Handle 
-					id={`${id}-${key}`} key={i}
+					id={`${id}-o-${key}`} key={i}
 					type="source"
 					position= {Position.Right}
 					style = {{top:outputs[key]}}
@@ -72,7 +72,7 @@ export const CustomNode = (
 		{Object.keys(userOutputs).map((key, i) => {
 			return (
 				<Handle 
-					id={`${id}-${key}`} key={i}
+					id={`${id}-o-${key}`} key={i}
 					type='source'
 					position= {Position.Right}
 					style = {{top:userOutputs[key]}}

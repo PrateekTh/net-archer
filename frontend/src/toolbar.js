@@ -10,7 +10,6 @@ export const PipelineToolbar = () => {
             <div className ="toolbar-inner" style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
                 <DraggableNode type='customInput' label='Input' />
                 <DraggableNode type='llm' label='LLM' />
-                <DraggableNode type='customOutput' label='Output' />
                 <DraggableNode type='customNode' label='Custom' />
                 <DraggableNode type='image' label='Image' />
                 <DraggableNode type='newText' label='Text' />
@@ -19,6 +18,9 @@ export const PipelineToolbar = () => {
                 <DraggableNode type='database' label='Database' />
                 <DraggableNode type='client' label='Client' />
                 <DraggableNode type='table' label='Table' />
+                <DraggableNode type='loadBalancer' label='Load Balancer' />
+                <DraggableNode type='utility' label='Utility' />
+
             </div>
         </div>
     );
