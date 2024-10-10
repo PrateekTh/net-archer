@@ -7,7 +7,7 @@ import ReactFlow, { Controls, Background, MiniMap, Panel, BackgroundVariant } fr
 import { useStore } from './store';
 import { useShallow } from 'zustand/shallow';
 
-import { InputNode, LLMNode, TextNode, CustomNode, ImageNode, NewTextNode, MLNode, ServerNode, DatabaseNode, ClientNode, TableNode, LoadBalancerNode, UtilityNode} from './nodes/nodebase';
+import { InputNode, LLMNode, TextNode, CustomNode, ImageNode, NewTextNode, MLNode, ServerNode, DatabaseNode, ClientNode, TableNode, LoadBalancerNode, UtilityNode, NoteNode} from './nodes/nodebase';
 import { CustomEdge } from './edges/customEdge'
 
 import 'reactflow/dist/style.css';
@@ -32,6 +32,7 @@ const nodeTypes = {
     table: TableNode,
     loadBalancer: LoadBalancerNode,
     utility: UtilityNode,
+    note: NoteNode,
 };
 
 const edgeTypes = {

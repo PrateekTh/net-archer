@@ -13,6 +13,7 @@ import { ClientNode } from './clientNode';
 import { TableNode } from './tableNode';
 import { LoadBalancerNode } from './loadBalancerNode';
 import { UtilityNode } from './utilityNode';
+import { NoteNode } from './noteNode';
 // import { FunctionNode } from './functionNode';
 
-export {InputNode, LLMNode, TextNode, ImageNode, NewTextNode, MLNode, DatabaseNode, ServerNode, ClientNode, TableNode, LoadBalancerNode, UtilityNode, CustomNode};
+export {InputNode, LLMNode, TextNode, ImageNode, NewTextNode, MLNode, DatabaseNode, ServerNode, ClientNode, TableNode, LoadBalancerNode, UtilityNode, NoteNode, CustomNode};

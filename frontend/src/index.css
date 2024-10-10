@@ -139,13 +139,13 @@ input[type=file]::file-selector-button {
 /* custom (base) node ------------------------------------*/
 .node-box{
   backdrop-filter: blur(2px);
-  min-height: 120px;
+  min-height: 80px;
   min-width: 200px;
   
 	background: linear-gradient(45deg, rgba(31, 197, 168, 0.6) 0%, rgba(87, 97, 178, 0.2) 95%, rgba(87, 97, 178, 0.8) 120%);
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 50px -20px, rgba(0, 0, 0, 0.4) 0px 30px 60px -30px, rgb(255, 255, 255) 0px -2px 10px -3px inset;
 
-  padding: 1rem;
+  padding: 0.8rem;
   border: 2px solid rgba(111, 111, 111, 0.2);
 	box-sizing: border-box; 
 	border-radius: 15px;
@@ -162,15 +162,32 @@ input[type=file]::file-selector-button {
   font-family: 'frutiger-bold';
 }
 
+.note-title{
+  background:transparent;
+  outline: none;
+  border: none;
+  padding: 1px;
+
+  width: 235px;
+}
+
 .node-box:hover{
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 50px -30px, rgba(0, 0, 0, 0.4) 0px 50px 80px -25px, rgb(255, 255, 255) 0px -2px 10px 0px inset;
+}
+
+.color-input{
+  border-radius: 5px;
+  width: 25px;
+  background-color: rgba(118, 237, 217, 0.408);
+  border: 2px solid rgba(111, 111, 111, 0.2);
+  align-self: flex-end;
 }
 
 .react-flow .react-flow__handle {
   width: 4px;
   height: 4px;
   border-radius: 4px;
-  background-color: rgb(7, 151, 127);
+  background-color: rgb(117, 227, 209);
   box-shadow: rgb(7, 151, 127) 0px 0px 2px 1px;
 
   border: 2px solid white;
@@ -195,6 +212,7 @@ input[type=file]::file-selector-button {
 }
 
 .text-box{
+  pointer-events: all;
 	line-height:1.2;
 	padding: 8px;
 	width:270px;

@@ -20,7 +20,7 @@ export const PipelineToolbar = () => {
                 <DraggableNode type='table' label='Table' />
                 <DraggableNode type='loadBalancer' label='Load Balancer' />
                 <DraggableNode type='utility' label='Utility' />
-
+                <DraggableNode type='note' label='Note' />
             </div>
         </div>
     );
