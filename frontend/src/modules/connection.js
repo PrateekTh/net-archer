@@ -4,8 +4,7 @@ const getGraph = async () => {
     const url = new URL(window.location.href);
     const id = url.searchParams.get("id");
 
-    console.log(id);
-
+    // console.log(id);
     let endpoint = id? backend_root + "/" + id : backend_root;
     let graph = null;
     try{
@@ -17,7 +16,6 @@ const getGraph = async () => {
         console.log(error);
         graph = null;
     }
-
     // if the id was not specified, i.e. the graph fetched is the default graph from the server, set id = null
     if(graph) graph.id = id? graph.id : null;
     return graph;
@@ -25,9 +23,8 @@ const getGraph = async () => {
 
 const setGraph = async (graph, id = null) => {
     const endpoint = id? backend_root + "/save/" + id : backend_root + "/save/";
-    console.log(endpoint)
-
-    console.log(backend_root)
+    // console.log(endpoint)
+    // console.log(backend_root)
     let graph_id = null;
     try{
         graph_id = await fetch(endpoint, {

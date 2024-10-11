@@ -18,14 +18,14 @@ let flow = {
         {
             "width": 323,
             "height": 133,
-            "id": "server-1",
+            "id": "server-def-1",
             "type": "server",
             "position": {
                 "x": 553,
                 "y": 209
             },
             "data": {
-                "id": "server-1",
+                "id": "server-def-1",
                 "nodeType": "server",
                 "tag": ""
             },
@@ -39,14 +39,14 @@ let flow = {
         {
             "width": 200,
             "height": 141,
-            "id": "client-1",
+            "id": "client-def-1",
             "type": "client",
             "position": {
                 "x": 184,
                 "y": 153
             },
             "data": {
-                "id": "client-1",
+                "id": "client-def-1",
                 "nodeType": "client",
                 "tag": ""
             },
@@ -61,10 +61,10 @@ let flow = {
 
     "edges": [
         {
-            "source": "client-1",
-            "sourceHandle": "client-1-output",
-            "target": "server-1",
-            "targetHandle": "server-1-system",
+            "source": "client-def-1",
+            "sourceHandle": "client-def-1-output",
+            "target": "server-def-1",
+            "targetHandle": "server-def-1-system",
             "type": "custom",
             "markerEnd": {
                 "type": "arrowclosed",
@@ -79,7 +79,7 @@ let flow = {
                 "anim": true,
                 "bi": false
             },
-            "id": "reactflow__edge-client-1client-1-output-server-1server-1-system",
+            "id": "reactflow__edge-client-def-1client-def-1-output-server-def-1server-def-1-system",
             "selected": false
         }
     ],

@@ -7,7 +7,7 @@ import ReactFlow, { Controls, Background, MiniMap, Panel, BackgroundVariant } fr
 import { useStore } from './store';
 import { useShallow } from 'zustand/shallow';
 
-import { InputNode, LLMNode, TextNode, CustomNode, ImageNode, NewTextNode, MLNode, ServerNode, DatabaseNode, ClientNode, TableNode, LoadBalancerNode, UtilityNode, NoteNode, GroupNode} from './nodes/nodebase';
+import { LLMNode, CustomNode, ImageNode, MLNode, ServerNode, DatabaseNode, ClientNode, TableNode, LoadBalancerNode, UtilityNode, NoteNode, GroupNode, FunctionNode} from './nodes/nodebase';
 import { CustomEdge } from './edges/customEdge'
 
 import 'reactflow/dist/style.css';
@@ -17,13 +17,11 @@ import { InitLoader, SaveButton, ClearButton, SubmitButton, ShareButton } from '
 const gridSize = 15;
 const proOptions = { hideAttribution: true };
 const nodeTypes = {
-    customInput: InputNode,
     llm: LLMNode,
-    text: TextNode,
     customNode: CustomNode,
     image: ImageNode,
     mlModel: MLNode,
-    newText: NewTextNode,
+    function : FunctionNode,
     server: ServerNode,
     database: DatabaseNode,
     client: ClientNode,

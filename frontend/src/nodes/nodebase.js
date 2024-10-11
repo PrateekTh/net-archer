@@ -1,12 +1,5 @@
 // nodebase.js
 
-import { InputNode } from './inputNode';
-import { LLMNode } from './llmNode';
-import { TextNode } from './textNode';
-import { CustomNode } from './customNode';
-import { ImageNode } from './imageNode';
-import { NewTextNode } from './newTextNode';
-import { MLNode } from './MLModel';
 import { ServerNode } from './serverNode';
 import { DatabaseNode } from './databaseNode';
 import { ClientNode } from './clientNode';
@@ -15,6 +8,12 @@ import { LoadBalancerNode } from './loadBalancerNode';
 import { UtilityNode } from './utilityNode';
 import { NoteNode } from './noteNode';
 import { GroupNode } from './groupNode'
-// import { FunctionNode } from './functionNode';
 
-export {InputNode, LLMNode, TextNode, ImageNode, NewTextNode, MLNode, DatabaseNode, ServerNode, ClientNode, TableNode, LoadBalancerNode, UtilityNode, NoteNode, GroupNode, CustomNode};
+// currently disabled
+import { LLMNode } from './llmNode';
+import { CustomNode } from './customNode';
+import { ImageNode } from './imageNode';
+import { MLNode } from './MLModel';
+import { FunctionNode } from './functionNode';
+
+export {LLMNode, ImageNode, MLNode, DatabaseNode, ServerNode, ClientNode, TableNode, LoadBalancerNode, UtilityNode, NoteNode, GroupNode, FunctionNode, CustomNode};

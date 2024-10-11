@@ -10,11 +10,18 @@ export const ClientNode = ({id, data}) => {
 
     const tagBox = useRef()
     const [tag, setTag] = useState(data?.tag || "");
+    const [option, setOption] = useState(data?.option || "");
 
     function onDescriptionChange(e){
         setTag(e.target.value)
         data.tag = e.target.value;
         adjustTextBox(tagBox.current);
+    }
+
+    function onSelectChange(e){
+        setOption(e.target.value)
+        data.option = e.target.value;
+        // console.log(data)
     }
 
     const body = (
@@ -37,7 +44,7 @@ export const ClientNode = ({id, data}) => {
                 value={tag}
             ></textarea>
 
-            <select name="client-type" onChange={(e)=> data.type = e.target.value} style={{width:'140px'}}>
+            <select name="client-type" value={option} onChange={onSelectChange} style={{width:'140px'}}>
                 <option value="">Select Type</option>
                 <option value="rel">Browser</option>
                 <option value="sql">Android</option>

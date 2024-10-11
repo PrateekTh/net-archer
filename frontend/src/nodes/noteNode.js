@@ -1,10 +1,10 @@
 import { CustomNode } from "./customNode";
 import { adjustTextBox } from "../modules/textarea";
-import { useRef, useState } from "react";
+import { useRef, useState, useLayoutEffect } from "react";
 
 const title = "";
-const inputs = {"":"30px"};
-const outputs = {};
+const inputs = {"": "30px"};
+const outputs = {"": "30px"};
 
 export const NoteNode = ({id, data}) => {
 
@@ -24,6 +24,10 @@ export const NoteNode = ({id, data}) => {
         setColor(e.target.value);
         data.color = e.target.value;
     }
+
+    useLayoutEffect(() => {
+        adjustTextBox(tagBox.current);
+    }, []);
 
     const body = (
         <>

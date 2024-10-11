@@ -22,15 +22,16 @@ export const SaveButton = () => {
         console.log(graph);
         if(id){
             // console.log("exists");
+            // console.log(id);
             new_id = await setGraph(graph, id);
+            setAlert("Saved to Database!")
 
         }else{
             new_id = await setGraph(graph);
+            setAlert("Saved to Database!")
         }
 
-        // console.log(new_id);
-        setAlert("Saved to Database!")
-        setID(new_id);
+        setID(new_id.result_id);
     }
 
     return (<>
