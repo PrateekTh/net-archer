@@ -24,8 +24,8 @@ const getGraph = async () => {
 }
 
 const setGraph = async (graph, id = null) => {
-    let endpoint = id? backend_root + "/save/" + id : backend_root + "/save/";
-    console.log(id)
+    const endpoint = id? backend_root + "/save/" + id : backend_root + "/save/";
+    console.log(endpoint)
 
     console.log(backend_root)
     let graph_id = null;

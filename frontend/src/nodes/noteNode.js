@@ -2,10 +2,11 @@ import { CustomNode } from "./customNode";
 import { adjustTextBox } from "../modules/textarea";
 import { useRef, useState } from "react";
 
+const title = "";
+const inputs = {"":"30px"};
+const outputs = {};
+
 export const NoteNode = ({id, data}) => {
-    const title = "";
-    const inputs = {"":"30px"};
-    const outputs = {};
 
     const tagBox = useRef()
     const [tag, setTag] = useState(data?.tag || "");
