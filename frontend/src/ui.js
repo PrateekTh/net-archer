@@ -44,6 +44,7 @@ const selector = (state) => ({
     edges: state.edges,
     getNodeID: state.getNodeID,
     addNode: state.addNode,
+    addGroup: state.addGroup,
     onNodesChange: state.onNodesChange,
     onEdgesChange: state.onEdgesChange,
     onConnect: state.onConnect,
@@ -59,7 +60,8 @@ export const PipelineUI = () => {
         addNode,
         onNodesChange,
         onEdgesChange,
-        onConnect
+        onConnect,
+        addGroup
     } = useStore( useShallow(selector));
 
     const getInitNodeData = (nodeID, type) => {
@@ -93,8 +95,9 @@ export const PipelineUI = () => {
                     position,
                     data: getInitNodeData(nodeID, type),
                 };
-        
-                addNode(newNode);
+                
+                if (type == 'group') addGroup(newNode);
+                else addNode(newNode);
             }
         },
         [reactFlowInstance]

@@ -111,6 +111,12 @@ export const useStore = create((set, get) => ({
         return `${type}-${newIDs[type]}`;
     },
 
+    addGroup: (node) => {
+        set({
+            nodes: [node, ...get().nodes]
+        });
+    },
+
     addNode: (node) => {
         set({
             nodes: [...get().nodes, node]
