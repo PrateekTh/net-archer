@@ -5,15 +5,16 @@ import { CustomNode } from "./customNode";
 import { useReactFlow } from 'reactflow';
 import { getCaretOffset, adjustTextBox} from "../modules/textarea"
 
-const title = "Table";
+const title = "Schema";
 const inputs = {"database": "30px"};
-const outputs = {"": "50%"};
+const outputs = {"": "30px"};
+const userInputs = {};
 
 export const TableNode = ({id, data}) => {
 
     const reactFlow = useReactFlow();
     const [currText, setCurrText] = useState(data?.text || '{{input}}');
-    const [userInputs, setUserInputs] = useState({});
+    const [userOutputs, setUserOutputs] = useState({});
     const textBox = useRef(null);
 
     const handleTextChange = (e) => {
@@ -31,17 +32,17 @@ export const TableNode = ({id, data}) => {
             matches.forEach(el => {
                 let temp = el.substring(2, el.length - 2).trim();
                 if(temp.length){
-                    if(!(temp in userInputs)) {
+                    if(!(temp in userOutputs)) {
                         const offset = getCaretOffset(textBox.current, textBox.current.selectionStart).top + 8;;
                         // reactFlow.zoomTo(1);
                         mp[temp] = offset * 0.5 * (1 + 1/reactFlow.getZoom());
                     }
-                    else { mp[temp] = userInputs[temp];}
+                    else { mp[temp] = userOutputs[temp];}
                 }
             });
         }
         
-        setUserInputs(mp);
+        setUserOutputs(mp);
     }
 
     useLayoutEffect(() => {
@@ -52,7 +53,6 @@ export const TableNode = ({id, data}) => {
     const body = (
         <div>
             <label>
-            <br/>
             <textarea ref = {textBox}
                 className='text-box'
                 style={{backgroundColor: 'rgba(256,256,256, 0.7)', borderWidth:'1px', margin:'5px', width:'120px'}}
@@ -66,5 +66,5 @@ export const TableNode = ({id, data}) => {
         </div>
     );
 
-    return CustomNode(id, data, title, inputs, outputs, body, userInputs);
+    return CustomNode(id, data, title, inputs, outputs, body, userInputs, userOutputs);
 }

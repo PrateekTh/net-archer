@@ -1,6 +1,6 @@
 import { CustomNode } from "./customNode";
 import { adjustTextBox } from "../modules/textarea";
-import { useRef, useState } from "react";
+import { useRef, useState, useLayoutEffect } from "react";
 import { ClientIcon } from "./icons/nodeIcons";
 
 const title = "Client";
@@ -24,6 +24,10 @@ export const ClientNode = ({id, data}) => {
         data.option = e.target.value;
         // console.log(data)
     }
+
+    useLayoutEffect(() => {
+        adjustTextBox(tagBox.current);
+    }, []);
 
     const body = (
         <>

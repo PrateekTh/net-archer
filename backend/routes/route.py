@@ -3,13 +3,16 @@ from models.graphs import Graph
 from config.database import collection_name
 from schema.schemas import individual_serial, list_serial
 from graph import checkDAG
+from vars.var import default_ID
 from bson import ObjectId
 
 router = APIRouter()
 
 @router.get('/')
 def get_default():
-    graph = individual_serial(collection_name.find_one({"_id": ObjectId("67012277236524700a08e5d6")}))
+    graph = individual_serial(collection_name.find_one({"_id": ObjectId(default_ID)}))
+    print(graph["id"])
+    graph["id"] = None
     return { "status":"ok", "data": graph }
 
 # get all graphs

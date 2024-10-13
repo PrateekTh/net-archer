@@ -1,6 +1,6 @@
 import { CustomNode } from "./customNode";
 import { adjustTextBox } from "../modules/textarea";
-import { useRef, useState } from "react";
+import { useRef, useState, useLayoutEffect } from "react";
 import { DatabaseIcon } from "./icons/nodeIcons";
 
 const title = "Database";
@@ -25,6 +25,10 @@ export const DatabaseNode = ({id, data}) => {
         data.option = e.target.value;
         // console.log(data)
     }
+
+    useLayoutEffect(() => {
+        adjustTextBox(tagBox.current);
+    }, []);
 
     const body = (
         <>

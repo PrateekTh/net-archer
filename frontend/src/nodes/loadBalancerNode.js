@@ -1,6 +1,6 @@
 import { CustomNode } from "./customNode";
 import { adjustTextBox } from "../modules/textarea";
-import { useRef, useState } from "react";
+import { useRef, useState, useLayoutEffect } from "react";
 import { LoadBalancerIcon } from "./icons/nodeIcons";
 
 const title = "Load Balancer";
@@ -25,6 +25,10 @@ export const LoadBalancerNode = ({id, data}) => {
     //     data.option = e.target.value;
     //     // console.log(data)
     // }
+
+    useLayoutEffect(() => {
+        adjustTextBox(tagBox.current);
+    }, []);
 
     const body = (
         

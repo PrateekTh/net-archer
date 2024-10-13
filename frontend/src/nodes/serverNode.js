@@ -7,7 +7,7 @@ import { getCaretOffset, adjustTextBox} from "../modules/textarea"
 import { ServerIcon } from './icons/nodeIcons';
 
 const title = "Server";
-const inputs = {"system": "53px"};
+const inputs = {"": "53px"};
 const outputs = {};
 
 export const ServerNode = ({id, data}) => {
@@ -68,6 +68,7 @@ export const ServerNode = ({id, data}) => {
     }
 
   useLayoutEffect(() => {
+    adjustTextBox(tagBox.current);
     adjustTextBox(textBox.current);
     handleUserInputs(currText);
   }, []);

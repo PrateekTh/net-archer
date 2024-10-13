@@ -1,6 +1,6 @@
 import { CustomNode } from "./customNode";
 import { adjustTextBox } from "../modules/textarea";
-import { useRef, useState } from "react";
+import { useRef, useState, useLayoutEffect } from "react";
 import { UtilityIcon } from "./icons/nodeIcons";
 
 export const UtilityNode = ({id, data}) => {
@@ -24,6 +24,10 @@ export const UtilityNode = ({id, data}) => {
         data.option = e.target.value;
         // console.log(data)
     }
+
+    useLayoutEffect(() => {
+        adjustTextBox(tagBox.current);
+    }, []);
 
     const body = (
         
