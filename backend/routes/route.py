@@ -3,15 +3,17 @@ from models.graphs import Graph
 from config.database import collection_name
 from schema.schemas import individual_serial, list_serial
 from graph import checkDAG
-from vars.var import default_ID
+import os
+from dotenv import load_dotenv
 from bson import ObjectId
 
 router = APIRouter()
 
+load_dotenv()
+
 @router.get('/')
 def get_default():
-    graph = individual_serial(collection_name.find_one({"_id": ObjectId(default_ID)}))
-    print(graph["id"])
+    graph = individual_serial(collection_name.find_one({"_id": ObjectId(os.getenv('DEFAULT_ID'))}))
     graph["id"] = None
     return { "status":"ok", "data": graph }
 
