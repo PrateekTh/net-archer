@@ -5,6 +5,8 @@ import { setGraph } from "../modules/connection";
 import { useState, useEffect } from 'react';
 import { Alert } from "./alert";
 
+const saveSuccessMessage = "Saved to Database!"
+const saveFailMessage = "Unable to reach server 🤖"
 
 export const SaveButton = () => {
     const reactFlow = useReactFlow();
@@ -23,15 +25,24 @@ export const SaveButton = () => {
         if(id){
             // console.log("exists");
             // console.log(id);
-            new_id = await setGraph(graph, id);
-            setAlert("Saved to Database!")
-
+            new_id = await setGraph(graph, id).then(
+                res => {
+                    if(res) setAlert(saveSuccessMessage);
+                    else setAlert(saveFailMessage);
+                    return res;
+                }
+            )
         }else{
-            new_id = await setGraph(graph);
-            setAlert("Saved to Database!")
+            new_id = await setGraph(graph).then(
+                res => {
+                    if(res) setAlert(saveSuccessMessage);
+                    else setAlert(saveFailMessage);
+                    return res;
+                }
+            );
         }
 
-        setID(new_id.result_id);
+        setID(new_id?.result_id);
     }
 
     return (<>

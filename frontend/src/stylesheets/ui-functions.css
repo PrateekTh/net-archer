@@ -1,0 +1,186 @@
+/* toolbar ------------------------------------*/
+.toolbar{
+    display: flex;
+    background: linear-gradient(45deg, rgb(166, 189, 185) 0%, rgb(107, 148, 147) 80%, rgb(199, 203, 229) 120%);
+    border-radius: 0px 0px 200px 0px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.4) 0px 30px 60px -30px, rgba(255, 255, 255, 0.777) 2px -4px 6px 0px inset;
+    transition: 1s;
+    padding: 0;
+}
+  
+.toolbar:hover{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.4) 0px 30px 40px -30px, rgba(255, 255, 255, 0.781) -2px -6px 10px 0px inset;
+}
+  
+.toolbar-inner{
+    padding: 15px;
+}
+  
+.icon-box{
+    width: 150px;
+    background-color: rgba(87, 97, 178);
+    box-shadow: rgba(255, 255, 255, 0.781) 0px -5px 6px 0px inset;
+    text-shadow: 0px 0px 50px rgba(255, 255, 255, 0.35);
+  
+    font-family: 'frutiger-bold';
+    padding: 0px 0px 5px 10px;
+    display: flex;
+    flex-direction: column;
+    font-size: 2rem;
+    font-style: italic;
+    justify-content: center;
+  
+    color: white;
+    gap: 0;
+    border-radius: 0px 70px 10px 0px;
+    transition: 1s;
+}
+  
+.icon-box:hover{
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.7);
+}
+
+.icon-box div{
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+}
+  
+.toolbar-item{
+  
+    font-family: 'frutiger';
+    padding: 0 0.8rem;
+    font-weight: bold;
+    min-width: 50px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+    justify-content: center;
+    flex-direction: column;
+  
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 50px -20px, rgba(255, 255, 255, 0.7) -1px -2px 6px -2px inset;
+  
+    transition: 0.8s;
+}
+  
+.toolbar-item:hover{
+    border-radius: 0px;
+    cursor: grab;
+}
+  
+  /* function pane ------------------------------------*/
+.function-pane{
+    padding: 20px;
+    border-radius: 5px;
+  
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+  
+  .function-pane > div{
+    width: 100%;
+}
+  
+.share-menu{
+    text-align: right;
+    left: 100%;
+    top:10%;
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    border: 2px solid rgba(162, 162, 162, 0.1);
+    padding:6px;
+  
+    animation: 0.5s ease-in-out 0s 1 share-menu-animation;
+}
+  
+@keyframes share-menu-animation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+  
+.share-option{
+    font-family: 'frutiger';
+    padding-bottom: 5px;
+    margin-top: 2px;
+    width: 100px;
+    cursor: pointer;
+  
+    transition-duration: 0.5s;
+    font-weight: bold;
+}
+  
+  .share-option:hover{
+    color: rgb(7, 151, 127);
+}
+  
+  .share-option:not(:last-child) {
+    border-bottom: 1px solid rgb(7, 151, 127);;
+}
+
+/* custom alerts ------------------------------------*/
+.alert{
+    backdrop-filter: blur(2px);
+    width: 200px;
+    max-width: 400px;
+    background: linear-gradient(-135deg, rgb(14, 165, 140) 0%, rgb(91, 103, 194) 100%);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.4) 0px 10px 30px 0px, rgb(255, 255, 255) 0px -2px 10px 0px inset;
+  
+    border-radius: 15px;
+  
+    animation: 6s ease-in-out 0s 1 alertAnimation;
+  
+    color:white;
+    font-weight: bold;
+    opacity: 0;
+    justify-content: center;
+    position:fixed;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    position: fixed; /*change to fixed */
+    left: 1vw; /*add px units */
+    top: 90vh;
+}
+  
+@keyframes alertAnimation {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    10% {
+        transform: translateY(-50%);
+        opacity: 1;
+    }
+  
+    90% {
+        transform: translateY(-50%);
+        opacity: 1;
+    }
+  
+    100% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+  
+}
+
+@media only screen and (max-width: 600px) {
+    .icon-box {
+        display: none;
+    }
+    
+    .share-menu{
+        flex-direction: column;
+    }
+  
+  }
