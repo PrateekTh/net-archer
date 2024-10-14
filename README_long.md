@@ -33,6 +33,11 @@ Here's the ***net archerized*** architecture of *net archer*:
 
 ## C. User Interface and Design
 
+Design inspired by the frutiger aero visual aesthetic.
+
+<img src="https://images4.alphacoders.com/134/thumb-1920-1349546.png" 
+style="border-radius:10px; width:500px">
+
 ## D. Storing & Processing Graph Data
 
 ## E. What next?

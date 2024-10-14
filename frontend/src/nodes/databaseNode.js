@@ -47,9 +47,10 @@ export const DatabaseNode = ({id, data}) => {
 
             <select name="image-task" value={option} onChange={onSelectChange} style={{width:'140px'}}>
                 <option value="">Select a Type</option>
-                <option value="rel">Relational</option>
-                <option value="sql">SQL</option>
-                <option value="tim">Time Series</option>
+                <option value="sql">Relational / SQL</option>
+                <option value="nql">Non Relational / NoSQL</option>
+                <option value="hie">Hierarchical</option>
+                <option value="ood">Object Oriented</option>
             </select>
         </>);
         
