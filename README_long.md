@@ -1,6 +1,6 @@
 # Retrospective Devlog - *Ready, aim, shoot!*
 
-<img src="./assets/kagura.png" width="550" >
+<img src="./assets/kagura.png" width="500" >
 
 ## A. Motivation
 
@@ -25,11 +25,9 @@ Given this statement, the roadmap is definitely on the ambitious side, and a sys
 
 The base requirements has essential features such as creating nodes, variables, dynamic handles, edge animations and flows, as well as functionalites for sharing, saving and exporting the graph in multiple formats (or as a link).
 
-Here's the ***net archerized*** architecture of *net archer*:
+Here's the ***net archerized*** architecture of *net archer* (will update to a more detailed version as soon as I get time):
 
 <img src="./assets/kagura.png" width = 400>
-
-
 
 ## C. User Interface and Design
 
@@ -39,6 +37,16 @@ Design inspired by the frutiger aero visual aesthetic.
 style="border-radius:10px; width:500px">
 
 ## D. Storing & Processing Graph Data
+
+### Backend
+net-archer uses Python's Fast API on the backend, which, well, is pretty fast. 
+
+No, stupid jokes aside, the roadmap ahead requires processing graphs and marking them for the user, and providing AI generated suggestions of the system's performance. This is the primary reason that python was chosen for the backend, due to the well-established AI ecosystem, as well as data manipulation support.
+
+### Database
+Since the graph data can have a lot of user defined variables and dynamic fields, the Database is MongoDB, which is non-relational. While this isn't something that cannot be done using relational databases, the nature of the graph is inherently a json object, which requires parsing every time the user performs an operation on it.
+
+More implications/ migration discussions will stay on hold until requirements arise.
 
 ## E. What next?
 
