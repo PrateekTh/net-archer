@@ -65,7 +65,6 @@ Net Archer follows a simple drag and drop approach to create node based systems,
 The entire entity is referred to as a "graph", which contains a variety of Nodes and Edges, each with their own properties. The entire graph contains certain global key strokes:
 - **Delete** an element: `Backspace`/ `Del` keys
 
-
 #### Toolbar
 
 The toolbar contains a set of draggable buttons, which can be dropped into the editor to create a node. The variety of nodes are committed to fulfilling several different identified use cases, and range from static essentials to highly dynamic and customisable hubs.
@@ -112,7 +111,7 @@ Edges form the connections between any given nodes. The prerequisite to creating
     - `Delete`: Delete the selected edge.
     - `Reverse`: Swap the source and target direction for the edge.
     - `Animate`: Create an animated stream of particles from the Source Handle to the Target Handle.
-    - `Bidirectional` (`<>`): Mark the edge as skibidirectional (for this consideration in upcoming processing functions)
+    - `Bidirectional` (`<>`): Mark the edge as bidirectional (for this consideration in upcoming processing functions)
 
 - Edges are **directed** by default, and the **`<>`**, bidirectional option, can be clicked to toggle this property.
 
